@@ -1,0 +1,31 @@
+# =====================================================================
+#  Entorno Conda para el Observatorio de Videos AWS S3
+# ---------------------------------------------------------------------
+#  Crea el entorno con:
+#      conda env create -f environment.yml
+#  Actívalo con:
+#      conda activate s3-observatorio
+#  Actualízalo (si cambian dependencias) con:
+#      conda env update -f environment.yml --prune
+#
+#  Funciona igual en Windows y macOS (los paquetes provienen de
+#  conda-forge, que es multiplataforma). Incluye `ffmpeg`, que aporta
+#  `ffprobe`, usado para medir la duración de cada video en la subida.
+# =====================================================================
+name: s3-observatorio2
+
+channels:
+  - conda-forge
+
+dependencies:
+  - python=3.11         # versión estable y ampliamente compatible
+  - boto3               # SDK de AWS para Python (subida a S3)
+  - botocore            # dependencia base de boto3 (transferencias multiparte)
+  - tqdm                # barra de progreso en la consola
+  - pandas              # tablas del dashboard
+  - streamlit           # dashboard web interactivo
+  - altair              # gráficos del dashboard (backend de Streamlit)
+  - ffmpeg              # provee `ffprobe` para medir la duración de los videos
+  - awscli              # CLI de AWS (configuración y verificación)
+  - pygments            # `pygmentize`: resaltado de código en las slides (minted)
+  - pip
